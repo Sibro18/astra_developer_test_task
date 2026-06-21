@@ -8,10 +8,7 @@
 qint64 FileUtils::calculateDirSize(const QString& path)
 {
 	qint64 totalSize = 0;
-	QVector<QString> dirsToVisit;
-	dirsToVisit.reserve(256);
-
-	dirsToVisit.push_back(path);
+	QVector<QString> dirsToVisit{path};
 
 	while (!dirsToVisit.isEmpty())
 	{

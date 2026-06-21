@@ -101,11 +101,6 @@ void CustomSystemModel::calculateAndSetDirSize(const QModelIndex& index)
 			_sizeCache[path] = FormatUtils::formatSize(size);
 		}
 
-		QMetaObject::invokeMethod(this, [this, persistentIndex]() {
-			if (persistentIndex.isValid())
-			{
-				emit dataChanged(persistentIndex, persistentIndex, {Qt::DisplayRole, CustomRoles::InProgressRole});
-			}
-		}, Qt::QueuedConnection);
+		emit dataChanged(persistentIndex, persistentIndex, {Qt::DisplayRole, CustomRoles::InProgressRole});
 	});
 }

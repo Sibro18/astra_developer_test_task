@@ -1,6 +1,6 @@
 diff -ruN original_dirview/CMakeLists.txt modified_dirview/CMakeLists.txt
 --- original_dirview/CMakeLists.txt	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/CMakeLists.txt	2026-06-21 02:31:11.920625294 +0300
++++ modified_dirview/CMakeLists.txt	2026-06-21 13:08:02.848851256 +0300
 @@ -0,0 +1,49 @@
 +cmake_minimum_required(VERSION 3.5)
 +
@@ -176,7 +176,7 @@ diff -ruN original_dirview/main.cpp modified_dirview/main.cpp
 -}
 diff -ruN original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp
 --- original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,40 @@
 +#include "custom_sort_filter_proxy_model.h"
 +
@@ -220,7 +220,7 @@ diff -ruN original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter
 +}
 diff -ruN original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h
 --- original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,17 @@
 +#ifndef CUSTOM_SORT_FILTER_PROXY_MODEL_H
 +#define CUSTOM_SORT_FILTER_PROXY_MODEL_H
@@ -241,8 +241,8 @@ diff -ruN original_dirview/src/custom_sort_filter_proxy_model/custom_sort_filter
 +#endif // CUSTOM_SORT_FILTER_PROXY_MODEL_H
 diff -ruN original_dirview/src/custom_system_model/custom_system_model.cpp modified_dirview/src/custom_system_model/custom_system_model.cpp
 --- original_dirview/src/custom_system_model/custom_system_model.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_system_model/custom_system_model.cpp	2026-06-21 02:31:02.964625072 +0300
-@@ -0,0 +1,111 @@
++++ modified_dirview/src/custom_system_model/custom_system_model.cpp	2026-06-21 13:07:56.733795103 +0300
+@@ -0,0 +1,106 @@
 +#include <QFileInfo>
 +#include <QDir>
 +
@@ -346,17 +346,12 @@ diff -ruN original_dirview/src/custom_system_model/custom_system_model.cpp modif
 +			_sizeCache[path] = FormatUtils::formatSize(size);
 +		}
 +
-+		QMetaObject::invokeMethod(this, [this, persistentIndex]() {
-+			if (persistentIndex.isValid())
-+			{
-+				emit dataChanged(persistentIndex, persistentIndex, {Qt::DisplayRole, CustomRoles::InProgressRole});
-+			}
-+		}, Qt::QueuedConnection);
++		emit dataChanged(persistentIndex, persistentIndex, {Qt::DisplayRole, CustomRoles::InProgressRole});
 +	});
 +}
 diff -ruN original_dirview/src/custom_system_model/custom_system_model.h modified_dirview/src/custom_system_model/custom_system_model.h
 --- original_dirview/src/custom_system_model/custom_system_model.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_system_model/custom_system_model.h	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/custom_system_model/custom_system_model.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,32 @@
 +#ifndef CUSTOM_SYSTEM_MODEL_H
 +#define CUSTOM_SYSTEM_MODEL_H
@@ -392,7 +387,7 @@ diff -ruN original_dirview/src/custom_system_model/custom_system_model.h modifie
 +#endif // CUSTOM_SYSTEM_MODEL_H
 diff -ruN original_dirview/src/custom_system_model_delegate/custom_system_model_delegate.cpp modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.cpp
 --- original_dirview/src/custom_system_model_delegate/custom_system_model_delegate.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.cpp	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.cpp	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,107 @@
 +#include <QPainterPath>
 +#include <QPen>
@@ -503,7 +498,7 @@ diff -ruN original_dirview/src/custom_system_model_delegate/custom_system_model_
 +}
 diff -ruN original_dirview/src/custom_system_model_delegate/custom_system_model_delegate.h modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.h
 --- original_dirview/src/custom_system_model_delegate/custom_system_model_delegate.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.h	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/custom_system_model_delegate/custom_system_model_delegate.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,46 @@
 +#ifndef CUSTOM_SYSTEM_MODEL_DELEGATE_H
 +#define CUSTOM_SYSTEM_MODEL_DELEGATE_H
@@ -553,7 +548,7 @@ diff -ruN original_dirview/src/custom_system_model_delegate/custom_system_model_
 +#endif // CUSTOM_SYSTEM_MODEL_DELEGATE_H
 diff -ruN original_dirview/src/main.cpp modified_dirview/src/main.cpp
 --- original_dirview/src/main.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/main.cpp	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/main.cpp	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,12 @@
 +#include <QApplication>
 +#include "main_window/main_window.h"
@@ -569,7 +564,7 @@ diff -ruN original_dirview/src/main.cpp modified_dirview/src/main.cpp
 +}
 diff -ruN original_dirview/src/main_window/main_window.cpp modified_dirview/src/main_window/main_window.cpp
 --- original_dirview/src/main_window/main_window.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/main_window/main_window.cpp	2026-06-21 02:32:41.964627527 +0300
++++ modified_dirview/src/main_window/main_window.cpp	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,117 @@
 +#include <QDir>
 +#include <QSize>
@@ -690,7 +685,7 @@ diff -ruN original_dirview/src/main_window/main_window.cpp modified_dirview/src/
 +}
 diff -ruN original_dirview/src/main_window/main_window.h modified_dirview/src/main_window/main_window.h
 --- original_dirview/src/main_window/main_window.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/main_window/main_window.h	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/main_window/main_window.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,42 @@
 +#ifndef MAIN_WINDOW_H
 +#define MAIN_WINDOW_H
@@ -736,7 +731,7 @@ diff -ruN original_dirview/src/main_window/main_window.h modified_dirview/src/ma
 +#endif // MAIN_WINDOW_H
 diff -ruN original_dirview/src/utils/CMakeLists.txt modified_dirview/src/utils/CMakeLists.txt
 --- original_dirview/src/utils/CMakeLists.txt	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/utils/CMakeLists.txt	2026-06-21 02:31:02.968625072 +0300
++++ modified_dirview/src/utils/CMakeLists.txt	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,14 @@
 +add_library(utils STATIC
 +	format_utils/format_utils.cpp
@@ -754,8 +749,8 @@ diff -ruN original_dirview/src/utils/CMakeLists.txt modified_dirview/src/utils/C
 +)
 diff -ruN original_dirview/src/utils/file_utils/file_utils.cpp modified_dirview/src/utils/file_utils/file_utils.cpp
 --- original_dirview/src/utils/file_utils/file_utils.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/utils/file_utils/file_utils.cpp	2026-06-21 02:31:02.968625072 +0300
-@@ -0,0 +1,48 @@
++++ modified_dirview/src/utils/file_utils/file_utils.cpp	2026-06-21 13:07:56.733795103 +0300
+@@ -0,0 +1,45 @@
 +#include <QVector>
 +#include <QDir>
 +#include <QDirIterator>
@@ -766,10 +761,7 @@ diff -ruN original_dirview/src/utils/file_utils/file_utils.cpp modified_dirview/
 +qint64 FileUtils::calculateDirSize(const QString& path)
 +{
 +	qint64 totalSize = 0;
-+	QVector<QString> dirsToVisit;
-+	dirsToVisit.reserve(256);
-+
-+	dirsToVisit.push_back(path);
++	QVector<QString> dirsToVisit{path};
 +
 +	while (!dirsToVisit.isEmpty())
 +	{
@@ -806,7 +798,7 @@ diff -ruN original_dirview/src/utils/file_utils/file_utils.cpp modified_dirview/
 +}
 diff -ruN original_dirview/src/utils/file_utils/file_utils.h modified_dirview/src/utils/file_utils/file_utils.h
 --- original_dirview/src/utils/file_utils/file_utils.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/utils/file_utils/file_utils.h	2026-06-21 02:31:02.968625072 +0300
++++ modified_dirview/src/utils/file_utils/file_utils.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,13 @@
 +#ifndef FILE_UTILS_H
 +#define FILE_UTILS_H
@@ -823,7 +815,7 @@ diff -ruN original_dirview/src/utils/file_utils/file_utils.h modified_dirview/sr
 +#endif // FILE_UTILS_H
 diff -ruN original_dirview/src/utils/format_utils/format_utils.cpp modified_dirview/src/utils/format_utils/format_utils.cpp
 --- original_dirview/src/utils/format_utils/format_utils.cpp	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/utils/format_utils/format_utils.cpp	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/utils/format_utils/format_utils.cpp	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,19 @@
 +#include <QLocale>
 +
@@ -846,7 +838,7 @@ diff -ruN original_dirview/src/utils/format_utils/format_utils.cpp modified_dirv
 +}
 diff -ruN original_dirview/src/utils/format_utils/format_utils.h modified_dirview/src/utils/format_utils/format_utils.h
 --- original_dirview/src/utils/format_utils/format_utils.h	1970-01-01 03:00:00.000000000 +0300
-+++ modified_dirview/src/utils/format_utils/format_utils.h	2026-06-21 02:31:02.964625072 +0300
++++ modified_dirview/src/utils/format_utils/format_utils.h	2026-06-21 13:07:56.733795103 +0300
 @@ -0,0 +1,13 @@
 +#ifndef FORMAT_UTILS_H
 +#define FORMAT_UTILS_H
