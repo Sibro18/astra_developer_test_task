@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(astra_developer_test_task VERSION 0.1 LANGUAGES CXX)
+project(astra-developer-test-task VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,32 +14,32 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets)
 
-add_subdirectory(src/utils)
+add_subdirectory(utils)
 
 option(BUILD_TESTS "Build unit tests" OFF)
 
 set(PROJECT_SOURCES
         src/main.cpp
-        src/main_window/main_window.cpp
-        src/main_window/main_window.h
-		src/custom_system_model_delegate/custom_system_model_delegate.cpp
-		src/custom_system_model_delegate/custom_system_model_delegate.h
-        src/custom_system_model/custom_system_model.h
-        src/custom_system_model/custom_system_model.cpp
-		src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.h
-		src/custom_sort_filter_proxy_model/custom_sort_filter_proxy_model.cpp
+		src/main_window.h
+		src/main_window.cpp
+		src/ui_parts/custom_system_model_delegate.h
+		src/ui_parts/custom_system_model_delegate.cpp
+		src/ui_parts/custom_system_model.h
+		src/ui_parts/custom_system_model.cpp
+		src/ui_parts/custom_sort_filter_proxy_model.h
+		src/ui_parts/custom_sort_filter_proxy_model.cpp
 )
 
-add_executable(astra_developer_test_task
+add_executable(${PROJECT_NAME}
 	${PROJECT_SOURCES}
 )
 
-target_link_libraries(astra_developer_test_task PRIVATE
+target_link_libraries(${PROJECT_NAME} PRIVATE
 	utils
 	Qt${QT_VERSION_MAJOR}::Widgets
 )
 
-install(TARGETS astra_developer_test_task
+install(TARGETS ${PROJECT_NAME}
 	RUNTIME DESTINATION bin
 )
 

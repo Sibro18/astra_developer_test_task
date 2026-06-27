@@ -1,5 +1,5 @@
 #include "custom_sort_filter_proxy_model.h"
-#include "../custom_system_model/custom_system_model.h"
+#include "utils/types.h"
 
 CustomSortFilterProxyModel::CustomSortFilterProxyModel(QObject* parent)
 	: QSortFilterProxyModel(parent)
@@ -22,8 +22,8 @@ bool CustomSortFilterProxyModel::lessThan(const QModelIndex &source_left, const 
 
 	if (column == 1)
 	{
-		auto leftSize = sourceModel()->data(source_left, CustomSystemModel::SizeInBytesRole).toLongLong();
-		auto rightSize = sourceModel()->data(source_right, CustomSystemModel::SizeInBytesRole).toLongLong();
+		auto leftSize = sourceModel()->data(source_left, CustomRoles::SizeInBytesRole).toLongLong();
+		auto rightSize = sourceModel()->data(source_right, CustomRoles::SizeInBytesRole).toLongLong();
 
 		return leftSize < rightSize;
 	}

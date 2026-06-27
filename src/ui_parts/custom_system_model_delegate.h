@@ -1,3 +1,4 @@
+// custom_system_model_delegate.h
 #ifndef CUSTOM_SYSTEM_MODEL_DELEGATE_H
 #define CUSTOM_SYSTEM_MODEL_DELEGATE_H
 
@@ -5,6 +6,10 @@
 #include <QModelIndex>
 #include <QPainter>
 #include <QColor>
+#include <QApplication>
+#include <QPalette>
+
+#include "utils/types.h"
 
 class CustomSystemModelDelegate : public QStyledItemDelegate
 {
@@ -16,32 +21,16 @@ public:
 		const QStyleOptionViewItem& option,
 		const QModelIndex& index
 	) const override;
-private:
-	struct ButtonState
-	{
-		bool isHovered;
-		bool isSelected;
-		bool isInProgress;
-	};
 
-	void _paintButton(
+private:
+	void m_paintButton(
 		QPainter* painter,
 		const QStyleOptionViewItem& option,
-		const ButtonState& state) const;
-	void _paintButtonBorder(
-		QPainter* painter,
-		const QRectF& rect,
 		const ButtonState& state
 	) const;
-	void _paintButtonText(
-		QPainter* painter,
-		const QRect& rect,
-		bool isInProgress
-	) const;
 
-	static constexpr QColor kBorderDefault{180, 180, 180, 120};
-	static constexpr QColor kBorderHover{80, 160, 230, 180};
-	static constexpr QColor kBorderPressed{60, 140, 210, 220};
+	static constexpr const char* kInProccessButtonText = "Processing";
+	static constexpr const char* kCalculateButtonText = "Calculate";
 };
 
 #endif // CUSTOM_SYSTEM_MODEL_DELEGATE_H

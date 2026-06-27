@@ -4,16 +4,18 @@
 
 QString FormatUtils::formatSize(qint64 bytes)
 {
+	static const QLocale locale;
 	int precision = 2;
 
-	if (bytes < 1024)
+	if (bytes < kKb)
 	{
 		precision = 0;
 	}
-	else if (bytes < 1024LL * 1024 * 1024)
+	else if (bytes < kMb)
 	{
 		precision = 1;
 	}
 
-	return QLocale().formattedDataSize(bytes, precision, QLocale::DataSizeIecFormat);
+
+	return locale.formattedDataSize(bytes, precision, QLocale::DataSizeIecFormat);
 }
