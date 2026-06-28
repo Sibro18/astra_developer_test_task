@@ -1,5 +1,5 @@
 build/
-CMakeLists.txt.user
+CMakeLists.txt.user*
 obj-x86_64-linux-gnu/
 debian/*.debhelper.log
 debian/*.substvars

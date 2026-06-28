@@ -2,15 +2,14 @@
 #define TEST_FILE_UTILS_H
 
 #include <QtTest>
-#include <QTemporaryDir>
-#include <QFile>
 #include <QDir>
-#include "utils/file_utils/file_utils.h"
+#include <QObject>
+
+#include "utils/file_utils.h"
 
 class TestFileUtils : public QObject
 {
 	Q_OBJECT
-
 private slots:
 	void testEmptyDirectory();
 	void testSingleFile();
@@ -24,7 +23,9 @@ private slots:
 
 private:
 	// Supporting method for creating a file of a given size
-	bool _createFileWithSize(const QString& path, qint64 size);
+	bool m_createFileWithSize(const QString& path, qint64 size);
+
+	static constexpr QDir::Filters kFilters = QDir::AllEntries | QDir::Hidden | QDir::NoDotAndDotDot | QDir::NoSymLinks;
 };
 
 #endif // TEST_FILE_UTILS_H

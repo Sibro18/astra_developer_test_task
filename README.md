@@ -17,8 +17,8 @@ sudo apt-get install -y build-essential cmake qtbase5-dev qtbase5-dev-tools
 
 ## 1. Клонирование репозитория
 ```bash
-git clone https://github.com/Sibro18/astra_developer_test_task.git
-cd astra_developer_test_task
+git clone https://github.com/Sibro18/astra-developer-test-task.git
+cd astra-developer-test-task
 ```
 
 ## 2.Убедитесь, что установлены инструменты упаковки:
@@ -38,7 +38,7 @@ cd astra_developer_test_task
 
 ## 5. Запустите установленное приложение:
   ```bash
-  astra_developer_test_task
+  astra-developer-test-task
   ```
 
 ## 6. Удаление установленного приложения:
@@ -50,8 +50,8 @@ cd astra_developer_test_task
 
 ## 1. Клонирование репозитория
 ```bash
-git clone https://github.com/Sibro18/astra_developer_test_task.git
-cd astra_developer_test_task
+git clone https://github.com/Sibro18/astra-developer-test-task.git
+cd astra-developer-test-task
 ```
 
 ## 2. Конфигурация и сборка
@@ -63,7 +63,7 @@ cmake --build build
 
 ## 3. Запуск приложения
 ```bash
-./build/astra_developer_test_task
+./build/astra-developer-test-task
 ```
 
 # Тестирование
@@ -93,8 +93,8 @@ ctest -V
 │   ├── main_window/                    # Главное окно приложения
 │   ├── custom_system_model/            # Кастомная модель файловой системы с асинхронным расчётом
 │   ├── custom_system_model_delegate/   # Делегат для форматирования ячеек столбца "Размер"
-│   ├── custom_sort_filter_proxy_model/ # Прокси-модель для фильтрации
-│   └── utils/                          # Библиотека утилит (FormatUtils, FileUtils)
+│   └── custom_sort_filter_proxy_model/ # Прокси-модель для фильтрации
+├── utils/								# Библиотека утилит (FormatUtils, FileUtils, types.h)
 ├── tests/                              # Юнит-тесты (Qt Test)
 ├── debian/                             # Файлы для упаковки в deb пакет
 ├── CMakeLists.txt                      # Основная конфигурация CMake
@@ -109,4 +109,4 @@ ctest -V
 - **Test**: Автоматический запуск юнит-тестов.
 - **Package**: Сборка `.deb` артефакта при каждом пуше в ветку `main`.
 
-Статус сборок доступен во вкладке [Actions](https://github.com/Sibro18/astra_developer_test_task/actions).
+Статус сборок доступен во вкладке [Actions](https://github.com/Sibro18/astra-developer-test-task/actions).

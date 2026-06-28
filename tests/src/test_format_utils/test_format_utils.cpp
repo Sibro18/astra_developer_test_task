@@ -1,3 +1,5 @@
+#include <QLocale>
+
 #include "test_format_utils.h"
 
 void TestFormatUtils::initTestCase()
@@ -22,8 +24,8 @@ void TestFormatUtils::testKilobytes()
 
 void TestFormatUtils::testMegabytes()
 {
-	QCOMPARE(FormatUtils::formatSize(1024 * 1024), QString("1.0 MiB"));
-	QCOMPARE(FormatUtils::formatSize(1024 * 1024 * 5), QString("5.0 MiB"));
+	QCOMPARE(FormatUtils::formatSize(1024 * 1024), QString("1.00 MiB"));
+	QCOMPARE(FormatUtils::formatSize(1024 * 1024 * 5), QString("5.00 MiB"));
 }
 
 void TestFormatUtils::testGigabytes()
@@ -37,7 +39,7 @@ void TestFormatUtils::testBoundaryValues()
 	QCOMPARE(FormatUtils::formatSize(1023), QString("1023 bytes"));
 	QCOMPARE(FormatUtils::formatSize(1024), QString("1.0 KiB"));
 	QCOMPARE(FormatUtils::formatSize(1024 * 1024 - 1), QString("1024.0 KiB"));
-	QCOMPARE(FormatUtils::formatSize(1024 * 1024), QString("1.0 MiB"));
+	QCOMPARE(FormatUtils::formatSize(1024 * 1024), QString("1.00 MiB"));
 }
 
 QTEST_MAIN(TestFormatUtils)

@@ -1,8 +1,9 @@
 add_library(utils STATIC
-	format_utils/format_utils.cpp
-	format_utils/format_utils.h
-	file_utils/file_utils.cpp
-	file_utils/file_utils.h
+	format_utils.h
+	format_utils.cpp
+	file_utils.h
+	file_utils.cpp
+	types.h
 )
 
 target_include_directories(utils PUBLIC
